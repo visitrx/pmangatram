@@ -2,26 +2,46 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* :root {
+--background: #ffffff;
+--foreground: #171717;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  --background: #0a0a0a;
+  --foreground: #ededed;
 }
+} */
 
 body {
   color: var(--foreground);
-  background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+  background: url('../assets/70864588_9659904.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 70%;
+;
+  height: 100vh;
+
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+@layer components {
+  .input {
+    @apply block w-full mt-1 px-3 py-2 text-white placeholder:text-gray-100 bg-white/50 backdrop-blur-sm rounded-lg focus:outline-dashed outline-offset-2 outline-white;
+  }
+
+  .heading {
+    @apply text-xl font-medium pl-1 text-white;
+  }
+
+  .btn {
+    @apply bg-purple-600 text-white font-bold py-2 px-4 rounded-lg;
   }
 }

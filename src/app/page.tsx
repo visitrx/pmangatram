@@ -1,101 +1,169 @@
+'use client';
 import Image from "next/image";
+import { useState } from "react";
 
+import logo from '@/assets/pmj.jpeg'
+
+const languageList: { [key: string]: { name: string; number: string; gender: string; male: string; female: string; company: string; } } = {
+  Hindi: {
+    name: "नाम",
+    number: "फ़ोन नंबर",
+    gender: "लिंग",
+    male: "पुरुष",
+    female: "महिला",
+    company: "कंपनी का नाम",
+  },
+  English: {
+    name: "Name",
+    number: "Phone Number",
+    gender: "Gender",
+    male: "Male",
+    female: "Female",
+    company: "Company Name",
+  },
+  Bangla: {
+    name: "নাম",
+    number: "ফোন নম্বর",
+    gender: "লিঙ্গ",
+    male: "পুরুষ",
+    female: "মহিলা",
+    company: "কোম্পানির নাম",
+  },
+  Telugu: {
+    name: "పేరు",
+    number: "ఫోన్ నంబర్",
+    gender: "లింగం",
+    male: "పురుషుడు",
+    female: "స్త్రీ",
+    company: "కంపెనీ పేరు",
+  }
+}
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [language, setLanguage] = useState<keyof typeof languageList>("English")
+  const [name, setName] = useState("");
+  const [number, setNumber] = useState("");
+  const [gender, setGender] = useState("");
+  const [company, setCompany] = useState("");
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const formData = {
+      name,
+      number,
+      gender,
+      company,
+    };
+    console.log(formData);
+  };
+
+  return (
+    <div className="flex flex-col gap-6 z-40 relative justify-center items-center p-5 md:p-10">
+      <Image src={logo} alt="PMJ" className="w-full md:w-1/2 self-center rounded-lg" />
+
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col justify-center gap-6 w-full lg:w-1/3 "
+      >
+        <div className="mb-10 w-1/3 md:w-full">
+          <label
+            className="heading"
+            htmlFor="name">Language: </label>
+          <select
+            className="ml-2"
+            name="language"
+            id="language"
+            defaultValue="English"
+            onChange={(e) => setLanguage(e.target.value)}
           >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            {/* <option className="text-gray-500" value="" >Select</option> */}
+            <option className="text-black" value="English" selected>English</option>
+            <option className="text-black" value="Hindi">Hindi</option>
+            <option className="text-black" value="Bangla">Bangla</option>
+            <option className="text-black" value="Telugu">Telugu</option>
+          </select>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+
+        <div>
+          <label
+            className="heading"
+            htmlFor="name">{languageList[language].name}</label>
+          <input
+            required
+            className="input"
+            type="text"
+            placeholder={languageList[language].name}
+            value={name}
+            onChange={(e) => setName(e.target.value)}
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
+        </div>
+
+        <div>
+          <label
+            className="heading"
+            htmlFor="number">{languageList[language].number}</label>
+          <input
+            required
+            className="input"
+            type="tel"
+            minLength={10}
+            maxLength={10}
+            placeholder={languageList[language].number}
+            value={number}
+            onChange={(e) => setNumber(e.target.value)}
           />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
+        </div>
+
+        <div className="flex gap-4 items-center">
+          <div className="heading">{languageList[language].gender} : </div>
+
+          <label
+            className="flex gap-1 text-white"
+            htmlFor="male">
+            {languageList[language].male}
+            <input
+              required
+              type="radio"
+              id="male"
+              name="gender"
+              value="male"
+              checked={gender === "male"}
+              onChange={(e) => setGender(e.target.value)}
+            />
+          </label>
+          <label
+            className="flex gap-1 text-white"
+            htmlFor="female">
+            {languageList[language].female}
+            <input
+              type="radio"
+              id="female"
+              name="gender"
+              value='female'
+              checked={gender === "female"}
+              onChange={(e) => setGender(e.target.value)}
+            />
+          </label>
+        </div>
+
+        <div>
+          <label
+            className="heading"
+            htmlFor="company">{languageList[language].company}</label>
+          <input
+            required
+            className="input"
+            type="text"
+            placeholder={languageList[language].company}
+            value={company}
+            onChange={(e) => setCompany(e.target.value)}
           />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        </div>
+        <br />
+        <button
+          type="submit"
+          className="btn">Submit</button>
+      </form>
     </div>
   );
 }
