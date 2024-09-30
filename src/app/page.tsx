@@ -3,6 +3,8 @@ import Image from "next/image";
 import { useState } from "react";
 
 import logo from '@/assets/pmj.jpeg'
+import toast from "react-hot-toast";
+import axios from "axios";
 
 
 const languageList: { [key: string]: { name: string; number: string; gender: string; male: string; female: string; company: string; } } = {
@@ -40,22 +42,54 @@ const languageList: { [key: string]: { name: string; number: string; gender: str
   }
 }
 export default function Home() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [language, setLanguage] = useState<keyof typeof languageList>("English")
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
   const [gender, setGender] = useState("");
   const [company, setCompany] = useState("");
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
+  // Handle form submission
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+    setIsSubmitting(true);
     const formData = {
       name,
       number,
       gender,
-      company,
+      company
     };
-    console.log(formData);
+
+    if (!formData.name || !formData.number || !formData.gender || !formData.company) {
+      toast.error("Please fill all the fields.");
+      setIsSubmitting(false);
+      return;
+    }
+
+    try {
+      const response = await axios.post('/api/register', formData, {
+        headers: {
+          "Content-type": "multipart/form-data"
+        },
+      });
+      console.log(response);
+
+      if (response.status === 200) {
+        toast.success("Register Successful");
+
+      } else {
+        toast.error(response.data.error);
+      }
+
+    } catch (error: unknown) {
+      if (axios.isAxiosError(error) && error.response?.data?.error) {
+        toast.error(error.response.data.error);
+      } else {
+        toast.error("An error occurred. Please try again later.");
+      }
+    }
+
+    setIsSubmitting(false);
   };
 
   return (
@@ -162,6 +196,7 @@ export default function Home() {
         </div>
         <br />
         <button
+          disabled={isSubmitting}
           type="submit"
           className="btn">Submit</button>
       </form>
