@@ -198,7 +198,7 @@ export default function Home() {
         <button
           disabled={isSubmitting}
           type="submit"
-          className="btn">Submit</button>
+          className="btn">{isSubmitting ? "Submitting..." : "Submit"}</button>
       </form>
     </div>
   );
