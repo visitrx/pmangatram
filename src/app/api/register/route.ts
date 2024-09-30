@@ -1,6 +1,7 @@
 import RegisterSchema from "@/config/models/register";
-import connectDB from "@/config/mongodb";
 import { NextResponse } from "next/server";
+
+// import connectDB from "@/config/mongodb";
 
 
 export async function POST(req: Request) {
