@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
 
-    await connectDB();
+    // await connectDB();
 
     const formData = await req.formData();
 
