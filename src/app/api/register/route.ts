@@ -2,6 +2,7 @@ import RegisterSchema from "@/config/models/register";
 import { NextResponse } from "next/server";
 
 import connectDB from "@/config/mongodb";
+// import sendSMS from "@/config/sms/sms";
 
 
 export async function POST(req: Request) {
@@ -18,6 +19,13 @@ export async function POST(req: Request) {
     // Check if the email and password are provided
     if (!name || !number || !gender ) {
         return NextResponse.json({ error: 'Please fill all the fields' }, { status: 400 })
+    }
+
+    // REgex for 6-9 10 digit indian number
+    const indianMobileRegex = /^[6-9]\d{9}$/;
+    if (!indianMobileRegex.test(number)) {
+        return NextResponse.json({ error: 'Invalid Phone Number' }, { status: 400 });
+        // return NextResponse.json({ error: 'Invalid number. Please enter a valid 10-digit Indian mobile number starting with 6, 7, 8, or 9.' });
     }
 
     const RegisterData = {
@@ -39,6 +47,8 @@ export async function POST(req: Request) {
     try {
         await RegisterSchema.create(RegisterData);
         // console.log('Registered successfully!', newUser);
+
+        // await sendSMS(number)
     }
     catch (error) {
         console.error('Error creating user:', error);
