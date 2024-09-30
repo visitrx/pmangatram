@@ -1,12 +1,12 @@
 import RegisterSchema from "@/config/models/register";
 import { NextResponse } from "next/server";
 
-// import connectDB from "@/config/mongodb";
+import connectDB from "@/config/mongodb";
 
 
 export async function POST(req: Request) {
 
-    // await connectDB();
+    await connectDB();
 
     const formData = await req.formData();
 

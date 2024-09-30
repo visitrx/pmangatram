@@ -9,6 +9,9 @@ export async function GET() {
         return NextResponse.json({ error: 'Internal Server Error' });
     }
 
+    console.log('Connected to MongoDB');
+    
+
     return NextResponse.json({ success: 'Connected' })
 
 };
