@@ -17,7 +17,6 @@ const registerSchema = new mongoose.Schema({
     },
     company: {
         type: String,
-        required: true,
     }
 }, { timestamps: true });
 

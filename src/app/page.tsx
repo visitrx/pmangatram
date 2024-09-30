@@ -60,7 +60,7 @@ export default function Home() {
       company
     };
 
-    if (!formData.name || !formData.number || !formData.gender || !formData.company) {
+    if (!formData.name || !formData.number || !formData.gender) {
       toast.error("Please fill all the fields.");
       setIsSubmitting(false);
       return;
@@ -122,7 +122,7 @@ export default function Home() {
         <div>
           <label
             className="heading"
-            htmlFor="name">{languageList[language].name}</label>
+            htmlFor="name">{languageList[language].name} *</label>
           <input
             required
             className="input"
@@ -136,7 +136,7 @@ export default function Home() {
         <div>
           <label
             className="heading"
-            htmlFor="number">{languageList[language].number}</label>
+            htmlFor="number">{languageList[language].number} *</label>
           <input
             required
             className="input"
@@ -150,7 +150,7 @@ export default function Home() {
         </div>
 
         <div className="flex gap-4 items-center">
-          <div className="heading">{languageList[language].gender} : </div>
+          <div className="heading">{languageList[language].gender} * : </div>
 
           <label
             className="flex gap-1 text-white"
@@ -186,7 +186,6 @@ export default function Home() {
             className="heading"
             htmlFor="company">{languageList[language].company}</label>
           <input
-            required
             className="input"
             type="text"
             placeholder={languageList[language].company}

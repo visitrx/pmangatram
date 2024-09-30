@@ -15,7 +15,7 @@ export async function POST(req: Request) {
     const company = formData.get('company')?.toString()?.trim();
 
     // Check if the email and password are provided
-    if (!name || !number || !gender || !company) {
+    if (!name || !number || !gender ) {
         return NextResponse.json({ error: 'Please fill all the fields' }, { status: 400 })
     }
 
