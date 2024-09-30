@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import logo from '@/assets/pmj.jpeg'
 
+
 const languageList: { [key: string]: { name: string; number: string; gender: string; male: string; female: string; company: string; } } = {
   Hindi: {
     name: "नाम",
