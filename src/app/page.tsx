@@ -5,6 +5,7 @@ import { useState } from "react";
 import logo from '@/assets/pmj.jpeg'
 import toast from "react-hot-toast";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 
 const languageList: { [key: string]: { name: string; number: string; gender: string; male: string; female: string; company: string; } } = {
@@ -49,6 +50,8 @@ export default function Home() {
   const [gender, setGender] = useState("");
   const [company, setCompany] = useState("");
 
+  const router = useRouter();
+
   // Handle form submission
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -76,6 +79,7 @@ export default function Home() {
 
       if (response.status === 200) {
         toast.success("Register Successful");
+        router.replace("/success");
 
       } else {
         toast.error(response.data.error);
