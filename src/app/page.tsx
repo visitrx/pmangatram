@@ -78,8 +78,8 @@ export default function Home() {
       console.log(response);
 
       if (response.status === 200) {
-        toast.success("Register Successful");
-        router.replace("/success");
+        toast.success("Registered Successfully!!");
+        router.replace(`/success?number=${response.data.number}&language=${language}`);
 
       } else {
         toast.error(response.data.error);

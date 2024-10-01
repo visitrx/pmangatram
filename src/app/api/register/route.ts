@@ -17,7 +17,7 @@ export async function POST(req: Request) {
     const company = formData.get('company')?.toString()?.trim();
 
     // Check if the email and password are provided
-    if (!name || !number || !gender ) {
+    if (!name || !number || !gender) {
         return NextResponse.json({ error: 'Please fill all the fields' }, { status: 400 })
     }
 
@@ -55,5 +55,5 @@ export async function POST(req: Request) {
         return NextResponse.json({ error: 'Error in registering !' }, { status: 400 })
     }
 
-    return NextResponse.json({ success: 'Registered successfully!' });
+    return NextResponse.json({ success: 'Registered successfully!', number: number });
 }
