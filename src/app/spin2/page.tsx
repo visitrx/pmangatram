@@ -28,10 +28,10 @@ export default function Page() {
     const [segments, setSegments] = useState<string[]>([]);
     const [isHidden, setHidden] = useState(false);
 
-    const DEFAULT_ID = 3842
+    const DEFAULT_ID = 6238
 
-    const DEFAULT_NAME = 'Vishal'
-    const DEFAULT_NUMBER = '9857743842'
+    const DEFAULT_NAME = 'Raj'
+    const DEFAULT_NUMBER = '7622486238'
 
     const audioRef = useRef<HTMLAudioElement>(null);
 
@@ -154,6 +154,7 @@ export default function Page() {
                 </div>
 
                 <div onClick={() => router.push('/spin2')} className='text-white mt-10 text-xl z-50 cursor-pointer'>Choose Next - &gt;</div>
+                
             </>
         } else {
 
