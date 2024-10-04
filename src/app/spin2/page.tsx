@@ -1,9 +1,12 @@
 'use client';
 
 import ParticlesExplosion from '@/components/ParticlesExplosion';
+import PricesBar from '@/components/PricesBar';
+import TypingEffect from '@/components/TypingEffect';
 import WheelComponent from '@/components/WheelComponent'
-import { useRouter } from 'next/navigation';
+// import { useRouter } from 'next/navigation';
 import React, { useEffect, useRef, useState } from 'react'
+
 
 // import fireWorkAudio from '../../assets/fireworks.mp3';
 
@@ -18,6 +21,8 @@ type UserData = {
     "__v"?: string
 }
 
+
+
 export default function Page() {
     // const [number, setNumber] = useState('peter');
     const [random, setRandom] = useState(false);
@@ -28,14 +33,14 @@ export default function Page() {
     const [segments, setSegments] = useState<string[]>([]);
     const [isHidden, setHidden] = useState(false);
 
-    const DEFAULT_ID = 6238
+    const DEFAULT_ID = 3842
 
     const DEFAULT_NAME = 'Raj'
     const DEFAULT_NUMBER = '7622486238'
 
     const audioRef = useRef<HTMLAudioElement>(null);
 
-    const router = useRouter()
+    // const router = useRouter()
 
     const fetchData = async () => {
         try {
@@ -132,7 +137,7 @@ export default function Page() {
 
     const [count, setCount] = useState(3);
     const CountDown = () => {
-
+        setFirework(true);
         useEffect(() => {
             if (count === 0) return;
 
@@ -147,14 +152,14 @@ export default function Page() {
             setFirework(true);
             playSound();
             return <>
-                <div className='text-4xl font-bold bg-white/60 cursor-pointer px-5 py-2 rounded-lg'>Winner Details - </div>
-                <div className='text-4xl font-bold bg-white/60 cursor-pointer px-5 py-2 rounded-lg mt-10'>
-                    Name - {winnerData?.name || DEFAULT_NAME} <br />
-                    Phone number - {winnerData?.number || DEFAULT_NUMBER}
+                <div className='text-4xl font-bold text-white  cursor-pointer px-5 py-2 rounded-lg'>Winner is - </div>
+                <div className='text-8xl font-bold text-white cursor-pointer px-5 py-2 rounded-lg mt-5'>
+                    <TypingEffect text={winnerData?.name || DEFAULT_NAME} /> <br />
+
                 </div>
 
-                <div onClick={() => router.push('/spin2')} className='text-white mt-10 text-xl z-50 cursor-pointer'>Choose Next - &gt;</div>
-                
+                {/* <div onClick={() => router.push('/spin2')} className='text-white mt-10 text-xl z-50 cursor-pointer'>Choose Next - &gt;</div> */}
+                <div className='mt-10 absolute bottom-0 text-sm'>{winnerData?.number || DEFAULT_NUMBER}</div>
             </>
         } else {
 
@@ -174,6 +179,7 @@ export default function Page() {
 
     return (
         <div className='z-50 flex flex-col justify-center items-center min-h-screen gap-10'>
+            <PricesBar />
             {
                 winner && !isHidden && <div onClick={() => {
                     // stopSound()
