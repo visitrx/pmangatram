@@ -35,8 +35,8 @@ export default function Page() {
 
     const DEFAULT_ID = 3842
 
-    const DEFAULT_NAME = 'Sameer'
-    const DEFAULT_NUMBER = '7882524688'
+    const DEFAULT_NAME = 'Jaya'
+    const DEFAULT_NUMBER = '9565108183'
 
     const audioRef = useRef<HTMLAudioElement>(null);
 
