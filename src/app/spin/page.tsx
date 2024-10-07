@@ -25,7 +25,7 @@ type UserData = {
 
 export default function Page() {
     // const [number, setNumber] = useState('peter');
-    const [random, setRandom] = useState(false);
+    const [random, setRandom] = useState(true);
     const [winner, setWinner] = useState('');
     const [winnerData, setWinnerData] = useState<UserData | null>(null);
     const [firework, setFirework] = useState(false);
