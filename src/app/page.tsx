@@ -105,7 +105,7 @@ export default function Home() {
 
   const calculateTimeLeft = () => {
     // const difference = +new Date('2024-10-08') - +new Date();
-    const targetDate = new Date('2024-10-08T09:00:00');
+    const targetDate = new Date('2024-10-09T10:00:00');
     const difference = +targetDate - +new Date();
     let timeLeft: timeLeftType = { days: 0, hours: 0, minutes: 0, seconds: 0 };
 
