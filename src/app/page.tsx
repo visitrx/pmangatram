@@ -1,6 +1,6 @@
 'use client';
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import logo from '@/assets/pmj.jpeg'
 import toast from "react-hot-toast";
@@ -41,6 +41,13 @@ const languageList: { [key: string]: { name: string; number: string; gender: str
     female: "స్త్రీ",
     company: "కంపెనీ పేరు",
   }
+}
+
+type timeLeftType = {
+  days: number,
+  hours: number,
+  minutes: number,
+  seconds: number,
 }
 export default function Home() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -96,6 +103,44 @@ export default function Home() {
     setIsSubmitting(false);
   };
 
+  const calculateTimeLeft = () => {
+    // const difference = +new Date('2024-10-08') - +new Date();
+    const targetDate = new Date('2024-10-08T09:00:00');
+    const difference = +targetDate - +new Date();
+    let timeLeft: timeLeftType = { days: 0, hours: 0, minutes: 0, seconds: 0 };
+
+    if (difference > 0) {
+      timeLeft = {
+        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((difference / 1000 / 60) % 60),
+        seconds: Math.floor((difference / 1000) % 60),
+      };
+    }
+
+    return timeLeft;
+  };
+
+  const [timeLeft, setTimeLeft] = useState<timeLeftType>(() => calculateTimeLeft() as timeLeftType);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setTimeLeft(calculateTimeLeft() as timeLeftType);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  });
+
+  if (timeLeft?.hours) {
+    return (
+      <div className="flex flex-col gap-6 z-40 relative justify-center items-center p-5 md:p-10">
+        <Image src={logo} alt="PMJ" className="w-full md:w-1/2 self-center rounded-lg" />
+        <h1 className="text-3xl text-center text-white mt-40">Registration will be starting soon..</h1>
+        <div className="text-3xl text-center text-white"> {timeLeft?.hours} H : {timeLeft?.minutes} M : {timeLeft?.seconds} S</div>
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-col gap-6 z-40 relative justify-center items-center p-5 md:p-10">
       <Image src={logo} alt="PMJ" className="w-full md:w-1/2 self-center rounded-lg" />
@@ -105,6 +150,7 @@ export default function Home() {
         className="flex flex-col justify-center gap-6 w-full lg:w-1/3 "
       >
         <div className="mb-10 w-1/3 md:w-full">
+
           <label
             className="heading"
             htmlFor="name">Language: </label>
