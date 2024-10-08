@@ -131,7 +131,7 @@ export default function Home() {
     return () => clearTimeout(timer);
   });
 
-  if (timeLeft?.hours) {
+  if (timeLeft?.hours || timeLeft?.minutes || timeLeft?.seconds) {
     return (
       <div className="flex flex-col gap-6 z-40 relative justify-center items-center p-5 md:p-10">
         <Image src={logo} alt="PMJ" className="w-full md:w-1/2 self-center rounded-lg" />
