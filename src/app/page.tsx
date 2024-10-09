@@ -234,8 +234,9 @@ export default function Home() {
         <div>
           <label
             className="heading"
-            htmlFor="company">{languageList[language].company}</label>
+            htmlFor="company">{languageList[language].company} *</label>
           <input
+            required
             className="input"
             type="text"
             placeholder={languageList[language].company}
