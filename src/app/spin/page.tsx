@@ -44,10 +44,10 @@ export default function Page() {
 
     const fetchData = async () => {
         try {
-            const response = await fetch('/api/getRandomData')
+            const response = await fetch('/api/getRandomData', { cache: 'no-store' })
             const data = await response.json()
             // console.log(data);
-            console.log(data[0].name);
+            // console.log(data[0]?.name);
 
             if (data) {
                 const temp: string[] = []
@@ -68,10 +68,6 @@ export default function Page() {
             console.log(error)
         }
     }
-
-    console.log(data);
-
-
 
     useEffect(() => {
         fetchData();

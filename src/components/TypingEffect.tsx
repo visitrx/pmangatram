@@ -3,11 +3,7 @@ import { useEffect, useState } from "react";
 
 const TypingEffect = ({ text }: { text: string }) => {
     const [displayedText, setDisplayedText] = useState('');
-    console.log(text);
-    console.log(displayedText);
-
-
-
+    
     useEffect(() => {
         // let index = 0;
         const typingInterval  = setInterval(() => {
