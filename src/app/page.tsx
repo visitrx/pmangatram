@@ -131,12 +131,12 @@ export default function Home() {
     return () => clearTimeout(timer);
   });
 
-  if (!timeLeft?.hours || !timeLeft?.minutes || !timeLeft?.seconds) {
+  if (!timeLeft?.minutes || !timeLeft?.seconds) {
     return (
       <div className="flex flex-col gap-6 z-40 relative justify-center items-center p-5 md:p-10">
         <Image src={logo} alt="PMJ" className="w-full md:w-1/2 self-center rounded-lg" />
         <h1 className="text-3xl text-center text-white mt-40">Registration Closed !!</h1>
-        {/* <div className="text-3xl text-center text-white">{timeLeft?.days} D : {timeLeft?.hours} hrs : {timeLeft?.minutes} min : {timeLeft?.seconds} sec</div> */}
+        <div className="text-3xl text-center text-white">{timeLeft?.days} D : {timeLeft?.hours} hrs : {timeLeft?.minutes} min : {timeLeft?.seconds} sec</div>
       </div>
     );
   }
