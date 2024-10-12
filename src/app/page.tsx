@@ -105,7 +105,7 @@ export default function Home() {
 
   const calculateTimeLeft = () => {
     // const difference = +new Date('2024-10-08') - +new Date();
-    const targetDate = new Date('2024-10-09T10:00:00');
+    const targetDate = new Date('2024-10-12T20:00:00');
     const difference = +targetDate - +new Date();
     let timeLeft: timeLeftType = { days: 0, hours: 0, minutes: 0, seconds: 0 };
 
@@ -131,11 +131,11 @@ export default function Home() {
     return () => clearTimeout(timer);
   });
 
-  if (timeLeft?.hours || timeLeft?.minutes || timeLeft?.seconds) {
+  if (!timeLeft?.hours || !timeLeft?.minutes || !timeLeft?.seconds) {
     return (
       <div className="flex flex-col gap-6 z-40 relative justify-center items-center p-5 md:p-10">
         <Image src={logo} alt="PMJ" className="w-full md:w-1/2 self-center rounded-lg" />
-        <h1 className="text-3xl text-center text-white mt-40">Registration will be starting soon..</h1>
+        <h1 className="text-3xl text-center text-white mt-40">Registration Closed !!</h1>
         <div className="text-3xl text-center text-white">{timeLeft?.days} D : {timeLeft?.hours} hrs : {timeLeft?.minutes} min : {timeLeft?.seconds} sec</div>
       </div>
     );
@@ -144,12 +144,15 @@ export default function Home() {
   return (
     <div className="flex flex-col gap-6 z-40 relative justify-center items-center p-5 md:p-10">
       <Image src={logo} alt="PMJ" className="w-full md:w-1/2 self-center rounded-lg" />
-
+      <div>
+        <h1 className="text-xl text-center text-white ">Registration will be closing soon..</h1>
+        <div className="text-xl text-center text-white">{timeLeft?.hours} hrs : {timeLeft?.minutes} min : {timeLeft?.seconds} sec</div>
+      </div>
       <form
         onSubmit={handleSubmit}
         className="flex flex-col justify-center gap-6 w-full lg:w-1/3 "
       >
-        <div className="mb-10 w-1/3 md:w-full">
+        <div className="mb-1 w-1/3 md:w-full">
 
           <label
             className="heading"

@@ -33,10 +33,10 @@ export default function Page() {
     const [segments, setSegments] = useState<string[]>([]);
     const [isHidden, setHidden] = useState(false);
 
-    const DEFAULT_ID = 8183
+    const DEFAULT_ID = 2234
 
-    const DEFAULT_NAME = 'Jaya'
-    const DEFAULT_NUMBER = '9565108183'
+    const DEFAULT_NAME = 'Milan pandit'
+    const DEFAULT_NUMBER = '8372002234'
 
     const audioRef = useRef<HTMLAudioElement>(null);
 
