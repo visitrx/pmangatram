@@ -105,7 +105,7 @@ export default function Home() {
 
   const calculateTimeLeft = () => {
     // const difference = +new Date('2024-10-08') - +new Date();
-    const targetDate = new Date('2024-10-12T20:00:00');
+    const targetDate = new Date('2024-10-12T10:00:00');
     const difference = +targetDate - +new Date();
     let timeLeft: timeLeftType = { days: 0, hours: 0, minutes: 0, seconds: 0 };
 
@@ -136,7 +136,7 @@ export default function Home() {
       <div className="flex flex-col gap-6 z-40 relative justify-center items-center p-5 md:p-10">
         <Image src={logo} alt="PMJ" className="w-full md:w-1/2 self-center rounded-lg" />
         <h1 className="text-3xl text-center text-white mt-40">Registration Closed !!</h1>
-        <div className="text-3xl text-center text-white">{timeLeft?.days} D : {timeLeft?.hours} hrs : {timeLeft?.minutes} min : {timeLeft?.seconds} sec</div>
+        {/* <div className="text-3xl text-center text-white">{timeLeft?.days} D : {timeLeft?.hours} hrs : {timeLeft?.minutes} min : {timeLeft?.seconds} sec</div> */}
       </div>
     );
   }
