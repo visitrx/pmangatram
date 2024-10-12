@@ -175,7 +175,7 @@ const WheelComponent = ({
         ctx.rotate((lastAngle + angle) / 2)
         ctx.fillStyle = contrastColor
         ctx.font = `bold ${fontSize} ${fontFamily}`
-        ctx.fillText(value.substring(0, 21), size / 2 + 20, 0)
+        ctx.fillText(value.substring(0, 1), 10, 0)
         ctx.restore()
     }
 
