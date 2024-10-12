@@ -7,7 +7,7 @@ export async function GET() {
     const db = await connectDB();
 
     try {
-        const data = await db?.collection("gifts").aggregate([{ $sample: { size: 20 } }]).toArray();
+        const data = await db?.collection("gifts").aggregate([{ $sample: { size: 40 } }]).toArray();
         return NextResponse.json(data, { status: 200 })
     } catch (error) {
         console.log(error);

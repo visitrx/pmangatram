@@ -68,7 +68,7 @@ export default function Page() {
                 const winners = shuffledData.slice(0, 3);
                 // temp.push(firstWinner, secondWinner, thirdWinner);
                 setWinners(winners);
-                setSegments(temp)
+                setSegments(temp.slice(0, 10))
             }
 
 
@@ -159,11 +159,11 @@ export default function Page() {
             playSound();
             return <>
                 <div className='text-4xl font-bold text-white  cursor-pointer px-5 py-2 rounded-lg'>Winners are - </div>
-                <div className='lg:text-7xl md:text-5xl text-4xl  font-bold text-white cursor-pointer px-5 py-2 rounded-lg mt-5'>
+                <div className=' md:text-5xl text-4xl  font-bold text-white cursor-pointer px-5 py-2 rounded-lg mt-5'>
                     {/* <TypingEffect text={winnerData?.name || DEFAULT_NAME} /> <br /> */}
-                    <div className='text-white flex items-center gap-10 mt-4'><div className='text-4xl'>1st -</div> {random ? winners[0].name : DEFAULT_NAME}</div>
-                    <div className='text-white flex items-center gap-10 mt-4'><div className='text-4xl'>2nd -</div> {random ? winners[1].name : DEFAULT_NAME_2}</div>
-                    <div className='text-white flex items-center gap-10 mt-4'><div className='text-4xl'>3rd -</div> {random ? winners[2].name : DEFAULT_NAME_3}</div>
+                    <div className='text-white flex items-center gap-10 mt-4'><div className='text-4xl'>1st -</div> {random ? winners[0].name : DEFAULT_NAME} ({random ? winners[0].number : DEFAULT_NUMBER})</div>
+                    <div className='text-white flex items-center gap-10 mt-4'><div className='text-4xl'>2nd -</div> {random ? winners[1].name : DEFAULT_NAME_2} ({random ? winners[1].number : DEFAULT_NUMBER_2})</div>
+                    <div className='text-white flex items-center gap-10 mt-4'><div className='text-4xl'>3rd -</div> {random ? winners[2].name : DEFAULT_NAME_3} ({random ? winners[2].number : DEFAULT_NUMBER_3})</div>
                 </div>
 
                 {/* <div onClick={() => router.push('/spin2')} className='text-white mt-10 text-xl z-50 cursor-pointer'>Choose Next - &gt;</div> */}
