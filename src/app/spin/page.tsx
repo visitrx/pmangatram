@@ -1,8 +1,8 @@
 'use client';
 
 import ParticlesExplosion from '@/components/ParticlesExplosion';
-import PricesBar from '@/components/PricesBar';
-import TypingEffect from '@/components/TypingEffect';
+// import PricesBar from '@/components/PricesBar';
+// import TypingEffect from '@/components/TypingEffect';
 import WheelComponent from '@/components/WheelComponent'
 // import { useRouter } from 'next/navigation';
 import React, { useEffect, useRef, useState } from 'react'
@@ -27,16 +27,23 @@ export default function Page() {
     // const [number, setNumber] = useState('peter');
     const [random, setRandom] = useState(true);
     const [winner, setWinner] = useState('');
-    const [winnerData, setWinnerData] = useState<UserData | null>(null);
+    const [winners, setWinners] = useState<UserData[]>([]);
+    // const [winnerData, setWinnerData] = useState<UserData | null>(null);
     const [firework, setFirework] = useState(false);
     const [data, setData] = useState<UserData[] | []>();
     const [segments, setSegments] = useState<string[]>([]);
     const [isHidden, setHidden] = useState(false);
 
-    const DEFAULT_ID = 8060
+    // const DEFAULT_ID = 8060
 
     const DEFAULT_NAME = 'Ramesh mallethula'
     const DEFAULT_NUMBER = '9603008060'
+
+    const DEFAULT_NAME_2 = 'Dharma Nayak'
+    const DEFAULT_NUMBER_2 = '9963880949'
+
+    const DEFAULT_NAME_3 = 'Milan pandit'
+    const DEFAULT_NUMBER_3 = '8372002234'
 
     const audioRef = useRef<HTMLAudioElement>(null);
 
@@ -57,7 +64,10 @@ export default function Page() {
                         temp.push(item.name)
                     }
                 })
-
+                const shuffledData = data.sort(() => 0.5 - Math.random());
+                const winners = shuffledData.slice(0, 3);
+                // temp.push(firstWinner, secondWinner, thirdWinner);
+                setWinners(winners);
                 setSegments(temp)
             }
 
@@ -108,7 +118,7 @@ export default function Page() {
     const onFinished = (winner: string) => {
         console.log(winner)
         setWinner(winner)
-        setWinnerData(data?.find((item) => item.name === winner) || null)
+        // setWinnerData(data?.find((item) => item.name === winner) || null)
         // setFirework(true)
         // playSound();
     }
@@ -148,14 +158,20 @@ export default function Page() {
             setFirework(true);
             playSound();
             return <>
-                <div className='text-4xl font-bold text-white  cursor-pointer px-5 py-2 rounded-lg'>Winner is - </div>
-                <div className='text-8xl font-bold text-white cursor-pointer px-5 py-2 rounded-lg mt-5'>
-                    <TypingEffect text={winnerData?.name || DEFAULT_NAME} /> <br />
-
+                <div className='text-4xl font-bold text-white  cursor-pointer px-5 py-2 rounded-lg'>Winners are - </div>
+                <div className='lg:text-7xl md:text-5xl text-4xl  font-bold text-white cursor-pointer px-5 py-2 rounded-lg mt-5'>
+                    {/* <TypingEffect text={winnerData?.name || DEFAULT_NAME} /> <br /> */}
+                    <div className='text-white flex items-center gap-10 mt-4'><div className='text-4xl'>1st -</div> {random ? winners[0].name : DEFAULT_NAME}</div>
+                    <div className='text-white flex items-center gap-10 mt-4'><div className='text-4xl'>2nd -</div> {random ? winners[1].name : DEFAULT_NAME_2}</div>
+                    <div className='text-white flex items-center gap-10 mt-4'><div className='text-4xl'>3rd -</div> {random ? winners[2].name : DEFAULT_NAME_3}</div>
                 </div>
 
                 {/* <div onClick={() => router.push('/spin2')} className='text-white mt-10 text-xl z-50 cursor-pointer'>Choose Next - &gt;</div> */}
-                <div className='mt-10 absolute bottom-0 text-sm'>{winnerData?.number || DEFAULT_NUMBER}</div>
+                <div className='flex gap-10 absolute bottom-0 text-sm'>
+                    <div className=''>1st - {random ? winners[0].number : DEFAULT_NUMBER}</div>
+                    <div className=''>2nd - {random ? winners[1].number : DEFAULT_NUMBER_2}</div>
+                    <div className=''>3rd - {random ? winners[2].number : DEFAULT_NUMBER_3}</div>
+                </div>
             </>
         } else {
 
@@ -175,17 +191,17 @@ export default function Page() {
 
     return (
         <div className='z-50 flex flex-col justify-center items-center min-h-screen gap-10'>
-            <PricesBar />
-            {
+            {/* <PricesBar /> */}
+            {/* {
                 winner && !isHidden && <div onClick={() => {
                     // stopSound()
                     // setFirework(false)
                     // setWinner('')
                 }} className='text-4xl font-bold bg-white/80 cursor-pointer px-5 py-2 rounded-lg mt-20 z-50'>Lucky draw id is - {winnerData?.number?.toString().slice(-4) || DEFAULT_ID}
                 </div>
-            }
+            } */}
             {
-                winner && !isHidden && <div onClick={() => setHidden(true)} className='text-white cursor-pointer text-2xl'> Get Winner Details &gt; </div>
+                winner && !isHidden && <div onClick={() => setHidden(true)} className='text-white cursor-pointer text-2xl mt-20'> Get Winners Details &gt; </div>
             }
 
             {
