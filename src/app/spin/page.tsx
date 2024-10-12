@@ -118,6 +118,7 @@ export default function Page() {
     const onFinished = (winner: string) => {
         console.log(winner)
         setWinner(winner)
+        setHidden(true)
         // setWinnerData(data?.find((item) => item.name === winner) || null)
         // setFirework(true)
         // playSound();
