@@ -1,5 +1,5 @@
 "use client";
-import Book1Image from "@/assets/book1.png";
+// import Book1Image from "@/assets/book1.png";
 import Book2Image from "@/assets/book2.png";
 import Image from "next/image";
 import Link from "next/link";
