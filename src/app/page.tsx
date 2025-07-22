@@ -15,7 +15,7 @@ export default function Home() {
 
 				<nav className="hidden md:flex items-center gap-6">
 					<Link href={"https://wa.me/+919151645694"}>
-						<button className="bg-[#fbbe01] text-black px-6 py-2 rounded-full hover:bg-orange-600 transition-colors font-medium">
+						<button className="bg-[#fbbe01] text-black px-6 py-2 rounded-full hover:bg-amber-500 transition-colors font-medium">
 							Pre-Book Now
 						</button>
 					</Link>
@@ -27,7 +27,7 @@ export default function Home() {
 				{/* Left Content */}
 				<div className="flex-1 max-w-xl lg:max-w-2xl mb-12 lg:mb-0 px-10 md:px-20">
 					<h1 className="font-mono text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 leading-tight mb-6 ">
-						TEEN IMAGE <br /> Launching soon
+						TEENS IMAGE <br /> Launching soon
 					</h1>
 
 					{/* <p className="text-gray-600 text-lg leading-relaxed mb-8 max-w-lg">
@@ -39,7 +39,7 @@ export default function Home() {
 
 					<div className="flex items-center gap-4">
 						<Link href={"https://wa.me/+919151645694"}>
-							<button className="bg-[#fbbe01] text-black px-8 py-3 rounded-full hover:bg-orange-600 transition-colors font-medium">
+							<button className="bg-[#fbbe01] text-black px-8 py-3 rounded-full hover:bg-amber-500 transition-colors font-medium">
 								Pre-Book Now
 							</button>
 						</Link>
