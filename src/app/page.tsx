@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function Home() {
 	return (
-		<div className="min-h-screen bg-gradient-to-br">
+		<div className="min-h-screen bg-gradient-to-br bg-black/10">
 			{/* Header */}
 			<header className="flex justify-between items-center p-6 md:p-8">
 				<div className="flex items-center gap-2">
@@ -15,7 +15,7 @@ export default function Home() {
 
 				<nav className="hidden md:flex items-center gap-6">
 					<Link href={"https://wa.me/+919151645694"}>
-						<button className="bg-orange-500 text-white px-6 py-2 rounded-full hover:bg-orange-600 transition-colors font-medium">
+						<button className="bg-[#fbbe01] text-black px-6 py-2 rounded-full hover:bg-orange-600 transition-colors font-medium">
 							Pre-Book Now
 						</button>
 					</Link>
@@ -39,7 +39,7 @@ export default function Home() {
 
 					<div className="flex items-center gap-4">
 						<Link href={"https://wa.me/+919151645694"}>
-							<button className="bg-orange-500 text-white px-8 py-3 rounded-full hover:bg-orange-600 transition-colors font-medium">
+							<button className="bg-[#fbbe01] text-black px-8 py-3 rounded-full hover:bg-orange-600 transition-colors font-medium">
 								Pre-Book Now
 							</button>
 						</Link>
