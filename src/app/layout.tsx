@@ -15,8 +15,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Pmangatram Jewellers",
-  description: "Pmangatram Jewellers",
+  title: "Teens Image",
+  description: "Teens Image Book by Vishal Tiwari",
 };
 
 export default function RootLayout({
