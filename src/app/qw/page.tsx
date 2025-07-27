@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
-import { Mail, Phone, MapPin, Globe, Linkedin, Twitter, Facebook, Instagram } from "lucide-react";
+import { Mail, Phone, MapPin, Globe, Linkedin, Instagram } from "lucide-react";
 import profileImage from "@/assets/images/book1.jpg";
 import Link from "next/link";
 import { BsTwitterX } from "react-icons/bs";
@@ -19,6 +19,7 @@ interface BusinessCard {
 		twitter?: string;
 		facebook?: string;
 		instagram?: string;
+		threads?: string;
 	};
 	avatar?: string;
 	bio?: string;
