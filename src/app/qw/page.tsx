@@ -1,7 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
-import { Mail, Phone, MapPin, Globe, Linkedin, Twitter, Facebook } from "lucide-react";
+import { Mail, Phone, MapPin, Globe, Linkedin, Twitter, Facebook, Instagram } from "lucide-react";
 import profileImage from "@/assets/images/book1.jpg";
+import Link from "next/link";
+import { BsTwitterX } from "react-icons/bs";
 
 interface BusinessCard {
 	id: string;
@@ -16,6 +18,7 @@ interface BusinessCard {
 		linkedin?: string;
 		twitter?: string;
 		facebook?: string;
+		instagram?: string;
 	};
 	avatar?: string;
 	bio?: string;
@@ -33,9 +36,9 @@ export default function BusinessCardPage() {
 		address: "",
 		website: "teensimage.com",
 		social: {
-			linkedin: "https://linkedin.com/in/vishaltiwari",
-			twitter: "https://twitter.com/vishaltiwari",
-			facebook: "https://facebook.com/vishaltiwari",
+			linkedin: "https://linkedin.com/in/vishal-tiwarii",
+			twitter: "https://x.com/teensimg",
+			instagram: "https://instagram.com/teensimg",
 		},
 		avatar: profileImage.src,
 		bio: "",
@@ -80,6 +83,12 @@ export default function BusinessCardPage() {
 									{businessCard.bio}
 								</p>
 							)}
+
+							<Link href={"https://amzn.in/d/31bkmeu"}>
+								<button className="bg-[#f6ab01] text-black rounded-lg py-2 px-4 hover:bg-primary-dark transition-colors hover:bg-amber-500 cursor-pointer">
+									Buy Now
+								</button>
+							</Link>
 						</div>
 					</div>
 
@@ -167,17 +176,17 @@ export default function BusinessCardPage() {
 										href={businessCard.social.twitter}
 										target="_blank"
 										rel="noopener noreferrer"
-										className="w-12 h-12 bg-blue-400 text-white rounded-full flex items-center justify-center hover:bg-blue-500 transition-colors">
-										<Twitter className="w-6 h-6" />
+										className="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center hover:bg-blue-500 transition-colors">
+										<BsTwitterX className="w-6 h-6" />
 									</a>
 								)}
-								{businessCard.social.facebook && (
+								{businessCard.social.instagram && (
 									<a
-										href={businessCard.social.facebook}
+										href={businessCard.social.instagram}
 										target="_blank"
 										rel="noopener noreferrer"
-										className="w-12 h-12 bg-blue-800 text-white rounded-full flex items-center justify-center hover:bg-blue-900 transition-colors">
-										<Facebook className="w-6 h-6" />
+										className="w-12 h-12 bg-pink-500 text-white rounded-full flex items-center justify-center hover:bg-pink-600 transition-colors">
+										<Instagram className="w-6 h-6" />
 									</a>
 								)}
 							</div>
