@@ -1,9 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
-import { Mail, Phone, MapPin, Globe, Linkedin, Instagram } from "lucide-react";
+import { Mail, Phone, Globe, Linkedin, Instagram } from "lucide-react";
 import profileImage from "@/assets/images/book1.jpg";
 import Link from "next/link";
-import { BsTwitterX } from "react-icons/bs";
+import { BsThreads, BsTwitterX } from "react-icons/bs";
 
 interface BusinessCard {
 	id: string;
@@ -40,6 +40,7 @@ export default function BusinessCardPage() {
 			linkedin: "https://linkedin.com/in/vishal-tiwarii",
 			twitter: "https://x.com/teensimg",
 			instagram: "https://instagram.com/teensimg",
+			threads: "https://threads.net/@teensimg",
 		},
 		avatar: profileImage.src,
 		bio: "",
@@ -85,11 +86,22 @@ export default function BusinessCardPage() {
 								</p>
 							)}
 
-							<Link href={"https://amzn.in/d/31bkmeu"}>
-								<button className="bg-[#f6ab01] text-black rounded-lg py-2 px-4 hover:bg-primary-dark transition-colors hover:bg-amber-500 cursor-pointer">
-									Buy Now
-								</button>
-							</Link>
+							<div className="flex flex-col md:flex-row items-center justify-center md:justify-start gap-4">
+								<div>Buy from - </div>
+								<Link href={"https://amzn.in/d/31bkmeu"}>
+									<button className="bg-[#f6ab01] text-black rounded-lg py-2 px-4 hover:bg-primary-dark transition-colors hover:bg-amber-500 cursor-pointer">
+										Amazon
+									</button>
+								</Link>
+								<Link
+									href={
+										"https://blueroseone.com/store/product/from-inputs-to-identity"
+									}>
+									<button className="bg-[#f6ab01] text-black rounded-lg py-2 px-4 hover:bg-primary-dark transition-colors hover:bg-amber-500 cursor-pointer">
+										Blue Rose
+									</button>
+								</Link>
+							</div>
 						</div>
 					</div>
 
@@ -127,7 +139,7 @@ export default function BusinessCardPage() {
 							</div>
 
 							{/* Address */}
-							<div className="flex items-start gap-4 p-4 bg-gray-50 rounded-lg md:col-span-2">
+							{/* <div className="flex items-start gap-4 p-4 bg-gray-50 rounded-lg md:col-span-2">
 								<MapPin className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
 								<div>
 									<p className="text-sm text-gray-600 font-medium">Address</p>
@@ -135,7 +147,7 @@ export default function BusinessCardPage() {
 										{businessCard.address}
 									</p>
 								</div>
-							</div>
+							</div> */}
 
 							{/* Website */}
 							{businessCard.website && (
@@ -177,7 +189,7 @@ export default function BusinessCardPage() {
 										href={businessCard.social.twitter}
 										target="_blank"
 										rel="noopener noreferrer"
-										className="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center hover:bg-blue-500 transition-colors">
+										className="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center hover:bg-black/50 transition-colors">
 										<BsTwitterX className="w-6 h-6" />
 									</a>
 								)}
@@ -188,6 +200,15 @@ export default function BusinessCardPage() {
 										rel="noopener noreferrer"
 										className="w-12 h-12 bg-pink-500 text-white rounded-full flex items-center justify-center hover:bg-pink-600 transition-colors">
 										<Instagram className="w-6 h-6" />
+									</a>
+								)}
+								{businessCard.social.threads && (
+									<a
+										href={businessCard.social.threads}
+										target="_blank"
+										rel="noopener noreferrer"
+										className="w-12 h-12 bg-gray-800 text-white rounded-full flex items-center justify-center hover:bg-gray-500 transition-colors">
+										<BsThreads className="w-6 h-6" />
 									</a>
 								)}
 							</div>
