@@ -32,7 +32,7 @@ export default function BusinessCardPage() {
 		name: "Vishal Tiwari",
 		title: "Author of TEENS IMAGE",
 		// company: "Fidel Law House",
-		email: "vishaltiwari@gmail.com",
+		email: "teensimg@gmail.com",
 		phone: "+91 9151645694",
 		address: "",
 		website: "teensimage.com",
